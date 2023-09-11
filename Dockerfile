@@ -12,7 +12,14 @@ ENV CLIENT_ID=your-client-id
 ENV CLIENT_SECRET=your-client-secret
 
 # Define how to start up keycloak. This is postfixed to the `kc.sh` script in the `entrypoint.sh`
-ENV KEYCLOAK_STARTUP_ARGUMENTS="start-dev --import-realm"
+ENV KEYCLOAK_STARTUP_ARGUMENTS="start --import-realm"
+
+ENV KC_DB=postgres
+ENV KC_DB_URL=jdbc:postgresql://postgresql:5432/keycloak
+ENV KC_DB_USERNAME=keycloak
+ENV KC_DB_PASSWORD=<CONFIGURE_IN_GITLAB>
+ENV KC_HOSTNAME=yivi-idp.sns.gidsopenstandaarden.org
+ENV KC_PROXY=edge
 
 USER root
 RUN chmod +x ./entrypoint.sh
