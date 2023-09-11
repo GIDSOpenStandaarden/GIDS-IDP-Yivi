@@ -4,19 +4,18 @@ This IDP uses https://irma-auth.sns.gidsopenstandaarden.org, which provides an O
 (previously IRMA) logic. This allows for an eased integration that support identity provider federation.   
 
 ## Getting started
-1. Set the `CLIENT_ID` and `CLIENT_SECRET` in the [`.env`](.env) file. Optionally modify the `KEYCLOAK_STARTUP_ARGUMENTS`.
-   This should be a client id/secret combination for https://irma-auth.sns.gidsopenstandaarden.org/oauth2/token.
-2. Build a docker image named `gids-idp-yivi`:
+1. Build a docker image named `gids-idp-yivi`:
    ```shell
     docker build -t gids-idp-yivi . --rm
    ```
-3. Run the image:
+2. Run the image. In the command below, replace the `<CLIENT_ID>` and `<CLIENT_SECRET>`
+   with values from https://irma-auth.sns.gidsopenstandaarden.org/oauth2/token:
    ```shell
-   docker run -p 8080:8080 gids-idp-yivi
+   docker run -p 8080:8080 gids-idp-yivi -e CLIENT_ID=<CLIENT_ID> -e CLIENT_SECRET=<CLIENT_SECRET>
    ```
    Keep in mind that you can also change the way Keycloak is started, for example:
    ```shell
-   docker run -p 8080:8080 gids-idp-yivi -e KEYCLOAK_STARTUP_ARGUMENTS="start-dev --debug --import-realm"
+   docker run -p 8080:8080 gids-idp-yivi -e CLIENT_ID=<CLIENT_ID> -e CLIENT_SECRET=<CLIENT_SECRET> -e KEYCLOAK_STARTUP_ARGUMENTS="start-dev --debug"
    ```
 ## After startup
 When the container is running, the following is prepared:
