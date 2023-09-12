@@ -2,6 +2,7 @@ FROM quay.io/keycloak/keycloak:22.0.1
 
 COPY ./yivi-realm.json /opt/keycloak/data/import/yivi-realm.json
 COPY ./entrypoint.sh ./entrypoint.sh
+COPY ./gids-yivi-theme /opt/keycloak/themes/gids-yivi-theme
 
 # Keycloak variables
 ENV KEYCLOAK_ADMIN=keycloak
