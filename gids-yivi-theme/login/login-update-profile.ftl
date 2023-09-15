@@ -30,6 +30,9 @@
             <script>
                 document.addEventListener('DOMContentLoaded', () => {
                   document.getElementById('email').value = new Date().getTime() + "@anon-yivi-user";
+
+                  // Auto-skip page as the user doesn't need to provide any information. Quick solution.
+                  document.querySelector('input[type="submit"]').click()
                 });
             </script>
             <input type="hidden" id="email" name="email" />
