@@ -27,20 +27,14 @@
 
             <#-- This view is initialized when logging in with the anonymous attribute from Yivi, we do not allow the user to -->
             <#-- set these values are they make the users identifiable -->
-            <input type="hidden" id="email" name="email" value="${(user.email!'anonymous@user')}"
-                   class="${properties.kcInputClass!}"
-                   aria-invalid="<#if messagesPerField.existsError('email')>true</#if>"
-            />
-
-            <input type="hidden" id="firstName" name="firstName" value="${(user.firstName!'Anonymous')}"
-                   class="${properties.kcInputClass!}"
-                   aria-invalid="<#if messagesPerField.existsError('firstName')>true</#if>"
-            />
-
-            <input type="hidden" id="lastName" name="lastName" value="${(user.lastName!'User')}"
-                   class="${properties.kcInputClass!}"
-                   aria-invalid="<#if messagesPerField.existsError('lastName')>true</#if>"
-            />
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                  document.getElementById('email').value = new Date().getTime() + "@anon-yivi-user";
+                });
+            </script>
+            <input type="hidden" id="email" name="email" />
+            <input type="hidden" id="firstName" name="firstName" value="${(user.firstName!'Anonymous')}" />
+            <input type="hidden" id="lastName" name="lastName" value="${(user.lastName!'User')}" />
 
 
             <div class="${properties.kcFormGroupClass!}">
