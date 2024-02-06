@@ -1,6 +1,12 @@
 service:
   internalPort: 8080
 
+startupProbe:
+  enabled: true
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  failureThreshold: 80
+
 ingress:
   annotations:
     kubernetes.io/tls-acme: "true"
